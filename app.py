@@ -34,5 +34,5 @@ if uploaded_file is not None:
     output_data = interpreter.get_tensor(output_details[0]['index'])
 
     # Display the prediction
-    prediction = "Parasitized" if output_data[0][0] > 0.5 else "Uninfected"
+    prediction = "Parasitized" if output_data[0][0] < 0.5 else "Uninfected"
     st.write(f"Prediction: {prediction}")
