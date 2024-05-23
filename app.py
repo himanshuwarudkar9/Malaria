@@ -2,18 +2,19 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 import tensorflow as tf
+import requests
 import os
 
 # Function to download and combine chunks
 def download_and_combine_chunks(chunk_urls, output_file):
     with open(output_file, 'wb') as output:
         for url in chunk_urls:
-            response = st.download_file(url)
+            response = requests.get(url)
             output.write(response.content)
 
 # Define chunk URLs (GitHub raw URLs)
 chunk_urls = [
-    'https://github.com/himanshuwarudkar9/Malaria/blob/main/malaria_classification_model.zip.part0',
+ 'https://github.com/himanshuwarudkar9/Malaria/blob/main/malaria_classification_model.zip.part0',
     'https://github.com/himanshuwarudkar9/Malaria/blob/main/malaria_classification_model.zip.part1',
     # Add more parts as necessary
 ]
