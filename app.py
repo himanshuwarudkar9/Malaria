@@ -2,20 +2,34 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 import tensorflow as tf
-import gdown
 import os
 
-# Function to download the model if not already downloaded
-def download_model():
-    url = 'https://drive.google.com/file/d/1zSPCTCc6X2Q5imzpGaNVf67IOckTq7Lc/view?usp=drive_link'  # Replace with your file ID
-    output = 'malaria_classification_model.h5'
-    if not os.path.exists(output):
-        gdown.download(url, output, quiet=False)
-    return output
+# Function to download and combine chunks
+def download_and_combine_chunks(chunk_urls, output_file):
+    with open(output_file, 'wb') as output:
+        for url in chunk_urls:
+            response = st.download_file(url)
+            output.write(response.content)
+
+# Define chunk URLs (GitHub raw URLs)
+chunk_urls = [
+    'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/malaria_classification_model.zip.part0',
+    'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/malaria_classification_model.zip.part1',
+    # Add more parts as necessary
+]
+
+# Download and combine chunks if model file doesn't exist
+zip_path = 'malaria_classification_model.zip'
+if not os.path.exists(zip_path):
+    download_and_combine_chunks(chunk_urls, zip_path)
+
+# Unzip the combined file
+import zipfile
+with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+    zip_ref.extractall()
 
 # Load the model
-model_path = download_model()
-model = tf.keras.models.load_model(model_path)
+model = tf.keras.models.load_model('malaria_classification_model.h5')
 
 # Define a function to preprocess the image
 def preprocess_image(image):
