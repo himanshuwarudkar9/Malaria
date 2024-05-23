@@ -13,8 +13,8 @@ def download_and_combine_chunks(chunk_urls, output_file):
 
 # Define chunk URLs (GitHub raw URLs)
 chunk_urls = [
-    'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/malaria_classification_model.zip.part0',
-    'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/main/malaria_classification_model.zip.part1',
+    'https://github.com/himanshuwarudkar9/Malaria/blob/main/malaria_classification_model.zip.part0',
+    'https://github.com/himanshuwarudkar9/Malaria/blob/main/malaria_classification_model.zip.part1',
     # Add more parts as necessary
 ]
 
