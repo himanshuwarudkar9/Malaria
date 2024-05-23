@@ -13,8 +13,8 @@ output_details = interpreter.get_output_details()
 
 # Define a function to preprocess the image
 def preprocess_image(image):
-    img = np.array(image.resize((150, 150))) / 255.0  # Resize image to match model input shape and normalize
-    return img.reshape(1, 150, 150, 3).astype(np.float32)  # Add batch dimension and convert to float32
+    img = np.array(image.resize((128, 128))) / 255.0  # Resize image to match model input shape and normalize
+    return img.reshape(1, 128, 128, 3).astype(np.float32)  # Add batch dimension and convert to float32
 
 # Streamlit UI
 st.title("Malaria Cell Classification")
