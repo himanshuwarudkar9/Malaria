@@ -21,7 +21,7 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-image: url("https://img.freepik.com/free-photo/close-up-mosquito-nature_23-2151365419.jpg?t=st=1716549526~exp=1716553126~hmac=b41f75817a10da3008be44998ccdf6abbf405ef1492a76e7ccdc5f78ab1bebb9&w=1060");
+        background-image: url("https://img.freepik.com/free-photo/close-up-mosquitoes-nature_23-2151365279.jpg?t=st=1716549794~exp=1716553394~hmac=6cb4bcb9ca25be0e1dcfb23360c299b75c439dc08ff671a536bac8181602b2b9&w=1060");
         background-size: cover;
     }
     </style>
