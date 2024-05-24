@@ -16,6 +16,19 @@ def preprocess_image(image):
     img = np.array(image.resize((128, 128))) / 255.0  # Resize image to match model input shape and normalize
     return img.reshape(1, 128, 128, 3).astype(np.float32)  # Add batch dimension and convert to float32
 
+# Add custom CSS for background image
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-image: url("https://research.uga.edu/news/wp-content/uploads/sites/19/2023/04/plasmodium_vivax.jpg");
+        background-size: cover;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Streamlit UI
 st.title("Malaria Cell Classification")
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
@@ -35,4 +48,4 @@ if uploaded_file is not None:
 
     # Display the prediction
     prediction = "Parasitized" if output_data[0][0] < 0.5 else "Uninfected"
-    st.write(f"Prediction: {prediction}")     
+    st.write(f"Prediction: {prediction}")
