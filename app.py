@@ -21,7 +21,7 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-image: url("https://research.uga.edu/news/wp-content/uploads/sites/19/2023/04/plasmodium_vivax.jpg");
+        background-image: url("https://img.freepik.com/free-photo/close-up-mosquito-nature_23-2151365419.jpg?t=st=1716549526~exp=1716553126~hmac=b41f75817a10da3008be44998ccdf6abbf405ef1492a76e7ccdc5f78ab1bebb9&w=1060");
         background-size: cover;
     }
     </style>
