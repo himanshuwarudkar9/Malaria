@@ -18,13 +18,10 @@ def preprocess_image(image):
 
 # Streamlit UI
 st.title("Malaria Cell Classification")
-
-# Upload image
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     # Display the uploaded image
-    st.subheader("Uploaded Image")
     image = Image.open(uploaded_file)
     st.image(image, caption='Uploaded Image', use_column_width=True)
 
@@ -36,17 +33,6 @@ if uploaded_file is not None:
     interpreter.invoke()
     output_data = interpreter.get_tensor(output_details[0]['index'])
 
-    # Display prediction
-    st.subheader("Prediction")
-    if output_data[0][0] < 0.5:
-        st.success("Prediction: Uninfected")
-    else:
-        st.error("Prediction: Parasitized")
-
-    # Display confidence score
-    confidence_score = output_data[0][0] if output_data[0][0] < 0.5 else 1.0 - output_data[0][0]
-    st.write(f"Confidence Score: {confidence_score:.2f}")
-
-    # Display probability distribution
-    st.subheader("Probability Distribution")
-    st.bar_chart({"Uninfected": 1.0 - confidence_score, "Parasitized": confidence_score})
+    # Display the prediction
+    prediction = "Parasitized" if output_data[0][0] < 0.5 else "Uninfected"
+    st.write(f"Prediction: {prediction}")     
